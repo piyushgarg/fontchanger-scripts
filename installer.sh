@@ -184,15 +184,14 @@ if $BOOTMODE; then
 #  [[ "$CON1" == "true" ]] ||  abort " [!] Internet Connection is Needed... [!]"
 #  [[ "$CON1" == "true" ]] || test_connection2
 #  [[ "$CON2" == "true" ]] || abort " [!] Internet Connection is Needed... [!]"
-  CON1 = true
-  CON2 = true
+  CON1=true
+  CON2=true
   ui_print " [-] Internet Connection is Up. [-] "
-  if "$CON1" || "$CON2"; then
-    for i in /storage/emulated/0/Fontchanger/*-list.txt; do
+  for i in /storage/emulated/0/Fontchanger/*-list.txt; do
       if [ -e $i ]; then
         rm $i 2>&1
       fi
-    done
+  done
     ui_print " [-] Downloading fonts.txt... [-] "
     $TMPDIR/tools/curl-$ARCH32 -k -o /storage/emulated/0/Fontchanger/fonts.txt https://raw.githubusercontent.com/piyushgarg/fontchanger-scripts/master/fonts-list.txt
 #    $TMPDIR/tools/curl-$ARCH32 -k -o /storage/emulated/0/Fontchanger/emojis-list.txt https://john-fawkes.com/Downloads/emojilist/emojis-list.txt && [ -f /storage/emulated/0/Fontchanger/emojis-list.txt ]
@@ -201,9 +200,6 @@ if $BOOTMODE; then
     else
       ui_print " [!] Error Downloading Lists... [!] "
     fi
-  else
-    exxit " [!] No Internet Detected... [!] " 
-  fi
 else
   ui_print " [!] Only uninstall is supported in recovery [!] "
   rm -rf $MODPATH $NVBASE/modules_update/$MODID $TMPDIR 2>/dev/null
