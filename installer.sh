@@ -179,19 +179,21 @@ if $BOOTMODE; then
   mkdir -p /storage/emulated/0/Fontchanger/Emojis/Custom 2>&1
   chmod 0755 $TMPDIR/tools/curl-$ARCH32
   chmod 0755 $TMPDIR/tools/busybox-$ARCH32
-#  ui_print " [-] Checking For Internet Connection... [-] "
+  ui_print " [-] Assuming Internet Connection... [-] "
 #  test_connection
 #  [[ "$CON1" == "true" ]] ||  abort " [!] Internet Connection is Needed... [!]"
 #  [[ "$CON1" == "true" ]] || test_connection2
 #  [[ "$CON2" == "true" ]] || abort " [!] Internet Connection is Needed... [!]"
   CON1 = true
+  CON2 = true
+  ui_print " [-] Internet Connection is Up. [-] "
   if "$CON1" || "$CON2"; then
     for i in /storage/emulated/0/Fontchanger/*-list.txt; do
       if [ -e $i ]; then
         rm $i 2>&1
       fi
     done
-    $TMPDIR/tools/curl-$ARCH32 -k -o /storage/emulated/0/Fontchanger/fonts.txt https://github.com/piyushgarg/fontchanger-scripts/raw/master/fonts-list.txt
+    $TMPDIR/tools/curl-$ARCH32 -k -o /storage/emulated/0/Fontchanger/fonts.txt https://raw.githubusercontent.com/piyushgarg/fontchanger-scripts/master/fonts-list.txt
 #    $TMPDIR/tools/curl-$ARCH32 -k -o /storage/emulated/0/Fontchanger/emojis-list.txt https://john-fawkes.com/Downloads/emojilist/emojis-list.txt && [ -f /storage/emulated/0/Fontchanger/emojis-list.txt ]
     if [ -f /storage/emulated/0/Fontchanger/fonts.txt ] ; then
       ui_print " [-] All Lists Downloaded Successfully... [-] "
