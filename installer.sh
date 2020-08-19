@@ -29,7 +29,8 @@ fi
 
 test_connection() {
   ui_print " [-] Testing internet connection [-] "
-  $TMPDIR/busybox-$ARCH32 ping -q -c 1 -W 1 google.com >/dev/null 2>&1 && ui_print " [-] Internet Detected [-] "; CON1=true; CON2=true || { exxit " [-] Error, No Internet Connection [-] "; CON=false; CON2=false; }
+  CON1=true; CON2=true
+  #$TMPDIR/busybox-$ARCH32 ping -q -c 1 -W 1 google.com >/dev/null 2>&1 && ui_print " [-] Internet Detected [-] "; CON1=true; CON2=true || { exxit " [-] Error, No Internet Connection [-] "; CON=false; CON2=false; }
 }
 
 test_connection2() {
