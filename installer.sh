@@ -193,6 +193,7 @@ if $BOOTMODE; then
         rm $i 2>&1
       fi
     done
+    ui_print " [-] Downloading fonts.txt... [-] "
     $TMPDIR/tools/curl-$ARCH32 -k -o /storage/emulated/0/Fontchanger/fonts.txt https://raw.githubusercontent.com/piyushgarg/fontchanger-scripts/master/fonts-list.txt
 #    $TMPDIR/tools/curl-$ARCH32 -k -o /storage/emulated/0/Fontchanger/emojis-list.txt https://john-fawkes.com/Downloads/emojilist/emojis-list.txt && [ -f /storage/emulated/0/Fontchanger/emojis-list.txt ]
     if [ -f /storage/emulated/0/Fontchanger/fonts.txt ] ; then
