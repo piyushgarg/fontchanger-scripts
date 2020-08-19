@@ -180,19 +180,15 @@ if $BOOTMODE; then
   chmod 0755 $TMPDIR/tools/curl-$ARCH32
   chmod 0755 $TMPDIR/tools/busybox-$ARCH32
   ui_print " [-] Assuming Internet Connection... [-] "
-  for i in /storage/emulated/0/Fontchanger/*-list.txt; do
-      if [ -e $i ]; then
-        rm $i 2>&1
-      fi
-  done
-    ui_print " [-] Downloading fonts.txt... [-] "
-    $TMPDIR/tools/curl-$ARCH32 -k -o /storage/emulated/0/Fontchanger/fonts.txt https://raw.githubusercontent.com/piyushgarg/fontchanger-scripts/master/fonts-list.txt
+  ui_print " [-] Downloading fonts.txt... [-] "
+  $TMPDIR/tools/curl-$ARCH32 -k -o /storage/emulated/0/Fontchanger/fonts.txt https://raw.githubusercontent.com/piyushgarg/fontchanger-scripts/master/fonts-list.txt
+  ui_print " [-] fonts.txt downloaded. [-] "
 #    $TMPDIR/tools/curl-$ARCH32 -k -o /storage/emulated/0/Fontchanger/emojis-list.txt https://john-fawkes.com/Downloads/emojilist/emojis-list.txt && [ -f /storage/emulated/0/Fontchanger/emojis-list.txt ]
-    if [ -f /storage/emulated/0/Fontchanger/fonts.txt ] ; then
-      ui_print " [-] All Lists Downloaded Successfully... [-] "
-    else
-      ui_print " [!] Error Downloading Lists... [!] "
-    fi
+  if [ -f /storage/emulated/0/Fontchanger/fonts.txt ] ; then
+    ui_print " [-] All Lists Downloaded Successfully... [-] "
+  else
+    ui_print " [!] Error Downloading Lists... [!] "
+  fi
 else
   ui_print " [!] Only uninstall is supported in recovery [!] "
   rm -rf $MODPATH $NVBASE/modules_update/$MODID $TMPDIR 2>/dev/null
