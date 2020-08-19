@@ -73,18 +73,17 @@ version_changes() {
   ui_print "  LINKS"
   ui_print "   - Git repository: github.com/Magisk-Modules-Repo/${MODID}/"
   ui_print "   - Telegram group: https://t.me/fontchange_magisk"
-  ui_print "   - Telegram profile: t.me/johnfawkes/"
   set +euo pipefail
 }
 
 download_files() {
 ui_print " - Downloading needed files"
-wget -O $MODPATH/font_changer https://github.com/johnfawkes/fontchanger-scripts/raw/master/font_changer 2>/dev/null
-wget -O $MODPATH/Fontchanger-functions.sh https://github.com/johnfawkes/fontchanger-scripts/raw/master/Fontchanger-functions.sh 2>/dev/null
-wget -O $MODPATH/listforcustom.txt https://github.com/johnfawkes/fontchanger-scripts/raw/master/listforcustom.txt 2>/dev/null
-#wget -O $MODPATH/service.sh https://github.com/johnfawkes/fontchanger-scripts/raw/master/service.sh 2>/dev/null
-wget -O $MODPATH/uninstall.sh https://github.com/johnfawkes/fontchanger-scripts/raw/master/uninstall.sh 2>/dev/null
-wget -O $MODPATH/fonts-list.txt https://github.com/johnfawkes/fontchanger-scripts/raw/master/fonts-list.txt 2>/dev/null
+wget -O $MODPATH/font_changer https://github.com/piyushgarg/fontchanger-scripts/raw/master/font_changer 2>/dev/null
+wget -O $MODPATH/Fontchanger-functions.sh https://github.com/piyushgarg/fontchanger-scripts/raw/master/Fontchanger-functions.sh 2>/dev/null
+wget -O $MODPATH/listforcustom.txt https://github.com/piyushgarg/fontchanger-scripts/raw/master/listforcustom.txt 2>/dev/null
+#wget -O $MODPATH/service.sh https://github.com/piyushgarg/fontchanger-scripts/raw/master/service.sh 2>/dev/null
+wget -O $MODPATH/uninstall.sh https://github.com/piyushgarg/fontchanger-scripts/raw/master/uninstall.sh 2>/dev/null
+wget -O $MODPATH/fonts-list.txt https://github.com/piyushgarg/fontchanger-scripts/raw/master/fonts-list.txt 2>/dev/null
 }
 
 set_busybox() {
@@ -169,7 +168,7 @@ if $BOOTMODE; then
     fi
   fi
   ui_print " [-] Downloading Needed Binary Files [-] "
-  wget -O $TMPDIR/tools.zip https://github.com/johnfawkes/fontchanger-scripts/raw/master/tools.zip
+  wget -O $TMPDIR/tools.zip https://github.com/piyushgarg/fontchanger-scripts/raw/master/tools.zip
   ui_print " [-] Extracting module files [-] "
 #  unzip -o "$ZIPFILE" "$MODID/*" -d ${MODPATH%/*}/ 2>&1
   unzip -o "$ZIPFILE" 'README.md' -d $TMPDIR 2>&1

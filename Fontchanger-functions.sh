@@ -62,12 +62,12 @@ fi
 check_updates() {
   echo -e "\n${B}Checking for mod updates${N}"
   rm -f $MODPATH/.updated 2>&1
-  wget -qO $MODPATH/.changelog https://raw.githubusercontent.com/johnfawkes/fontchanger-scripts/$branch/changelog.txt 2>/dev/null
+  wget -qO $MODPATH/.changelog https://raw.githubusercontent.com/piyushgarg/fontchanger-scripts/$branch/changelog.txt 2>/dev/null
   for i in Fontchanger-functions.sh,MODUTILVCODE system/bin/font_changer,scriptver; do
     local file="$(echo $i | cut -d , -f1)" value="$(echo $i | cut -d , -f2)"
-    if [ `wget -qO - https://raw.githubusercontent.com/JohnFawkes/fontchanger-scripts/$branch/$(basename $file) 2>/dev/null | grep "^$value=" | cut -d = -f2` -gt `grep "^$value=" $MODPATH/$file | cut -d = -f2` ]; then
+    if [ `wget -qO - https://raw.githubusercontent.com/piyushgarg/fontchanger-scripts/$branch/$(basename $file) 2>/dev/null | grep "^$value=" | cut -d = -f2` -gt `grep "^$value=" $MODPATH/$file | cut -d = -f2` ]; then
       echo "$scriptver" > $MODPATH/.updated
-      wget -qO $MODPATH/$file https://raw.githubusercontent.com/JohnFawkes/fontchanger-scripts/$branch/$(basename $file) 2>/dev/null
+      wget -qO $MODPATH/$file https://raw.githubusercontent.com/piyushgarg/fontchanger-scripts/$branch/$(basename $file) 2>/dev/null
       [ "$file" == "system/bin/font_changer" ] && { umount -l /$file; mount -o bind $MODPATH/$file /$file; }
     fi
   done
@@ -1725,7 +1725,7 @@ choose_help_menu() {
 
 hidden_menu() {
   rm -f $MODPATH/.branches.txt 2>&1
-  branches=($(curl https://api.github.com/repos/johnfawkes/fontchanger-scripts/branches | grep "name" | sed 's/name//' | sed 's/://' | sed 's/"//' | sed 's/"//' | sed 's/,//'))  choice=""
+  branches=($(curl https://api.github.com/repos/piyushgarg/fontchanger-scripts/branches | grep "name" | sed 's/name//' | sed 's/://' | sed 's/"//' | sed 's/"//' | sed 's/,//'))  choice=""
   while [ "$choice" != "q" ]; do
   clear
   echo -e " "
